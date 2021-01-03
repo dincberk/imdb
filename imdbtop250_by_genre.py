@@ -4,8 +4,9 @@ import numpy as np
 
 ia = IMDb()
 top250Movies = ia.get_top250_movies()
+
 #get top 20 Movies this way which returns lot of details including genres
-top200Movies = [ia.get_movie(movie.movieID) for movie in top250Movies[:20]]
+top250Movies = [ia.get_movie(movie.movieID) for movie in top250Movies[:250]]
 dataset=[ movie['title'] for movie in top250Movies ]
 
 """
@@ -47,10 +48,8 @@ dataset=pd.DataFrame(dataset)
 dataset_genre=[ movie['genres'] for movie in top200Movies]
 dataset_genre=pd.DataFrame(dataset_genre)
 dataset_genre = dataset_genre.fillna(value='')
-
 dataset_genre['genresall']=''
 dataset_genre['genresall'] = dataset_genre[[0,1,2,3]].astype(str).agg(''.join, axis=1)
-
 dataset_genre=dataset_genre.drop([0,1,2,3],axis=1)
 dataset_rating=[ movie['rating'] for movie in top200Movies]
 dataset_rating=pd.DataFrame(dataset_rating)
