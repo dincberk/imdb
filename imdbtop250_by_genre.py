@@ -1,3 +1,5 @@
+#PLEASE BE AWARE CODE IS A DUMMY AS OF THIS AND CAN ONLY TAKE 4 GENRES AS A USER INPUT WHILE FILTERING
+
 from imdb import IMDb  
 import pandas as pd  
 import numpy as np
